@@ -1,6 +1,6 @@
 # Headless Django Server Application
 
-A starter project for a headless REST API powered by Django
+A starter project for a headless REST/GraphQL API powered by Django
 
 ## Technologies
 
@@ -10,7 +10,7 @@ A starter project for a headless REST API powered by Django
 # Local Development
 
 ## Requirements
-1. Editor of choice (VSCode, Pycharm recommended)
+1. Editor of choice (VSCode, Pycharm)
 2. Docker for Desktop (With appropriate licence)
 
 
