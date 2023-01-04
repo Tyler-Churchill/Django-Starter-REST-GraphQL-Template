@@ -1,0 +1,67 @@
+[tool.poetry]
+name = "headless-django-bootstrap"
+version = "0.1.0"
+description = ""
+authors = ["Tyler Churchill"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "3.11.1"
+django = "4.1.3"
+psycopg2 = "2.9.5"
+uvicorn = "0.20.0"
+gunicorn = "20.1.0"
+djangorestframework = "3.14.0"
+django-filter = "22.1"
+djangorestframework-stubs = "1.8.0"
+drf-spectacular = {extras = ["sidecar"], version = "0.25.1"}
+djangorestframework-simplejwt = "5.2.2"
+django-extensions = "3.2.1"
+graphene-django = "3.0.0"
+
+[tool.poetry.group.dev.dependencies]
+pytest-django = "4.5.2"
+factory-boy = "3.2.1"
+pytest = "7.2.0"
+django-stubs = "1.13.1"
+black = "22.10.0"
+flake8 = "6.0.0"
+pylint = "2.15.8"
+mypy = "0.990"
+snapshottest = "0.6.0"
+isort = "5.11.4"
+pytest-xdist = "3.1.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--nomigrations --ds=apps.settings"
+pythonpath = [
+  "apps"
+]
+testpaths = [
+    "tests/unit",
+    "tests/integration",
+]
+
+[tool.mypy]
+plugins = ["mypy_django_plugin.main"]
+
+[[tool.mypy.overrides]]
+module = [
+    "factory",
+    "rest_framework_simplejwt.*",
+    "graphene",
+    "graphene_django.*",
+    "snapshottest"
+]
+ignore_errors = true
+
+[tool.django-stubs]
+django_settings_module = "apps.settings"
+
+[virtualenvs]
+create = false

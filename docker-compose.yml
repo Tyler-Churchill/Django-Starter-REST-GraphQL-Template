@@ -1,0 +1,27 @@
+version: "3"
+services:
+  postgres:
+    image: postgres
+    volumes:
+      - database_data:/var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+  server:
+    container_name: django-server
+    build: .
+    volumes:
+      - .:/app/code
+    restart: always
+    ports:
+      - "8000:8000"
+    links:
+      - postgres
+    depends_on:
+      - postgres
+volumes:
+  database_data:
+    driver: local

@@ -1,0 +1,15 @@
+info()
+{
+   # Display Help
+   echo "start: Starts the Django development server with hot reload"
+}
+
+while getopts ":info" option; do
+   case $option in
+      info) # display Help
+         info
+         exit;;
+   esac
+done
+./manage.py spectacular --color --validate --file schema.yml 
+poetry run python -m uvicorn apps.asgi:application --port 8000 --host 0.0.0.0 --reload --log-level debug

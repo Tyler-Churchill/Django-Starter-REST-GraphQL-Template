@@ -1,0 +1,6 @@
+
+echo "Available Commands:"
+for file in ./commands/*
+do
+ echo $file
+done

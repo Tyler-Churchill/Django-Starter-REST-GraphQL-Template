@@ -1,0 +1,1 @@
+poetry run python -m gunicorn -k uvicorn.workers.UvicornWorker --workers 3 --timeout 60 --graceful-timeout 60 apps.asgi:application
